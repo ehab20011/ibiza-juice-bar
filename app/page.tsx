@@ -41,12 +41,20 @@ export default function Home() {
             <p className="max-w-xl mb-8 text-base sm:text-xl text-gray-50 drop-shadow-lg">
               Start your day with a burst of flavor and nutrients—your body will thank you!
             </p>
-            <Link
-              href="https://www.seamless.com/menu/ibiza-juice-bar-32-04b-30th-ave-queens/2299950"
-              className="bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition-colors shadow-md"
-            >
-              Order Now
-            </Link>
+            <div className="flex gap-4">
+              <Link
+                href="https://www.seamless.com/menu/ibiza-juice-bar-32-04b-30th-ave-queens/2299950"
+                className="bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition-colors shadow-md"
+              >
+                Order Now
+              </Link>
+              <Link
+                href="./menu"
+                className="bg-yellow-400 text-black px-6 py-3 rounded-full font-semibold hover:bg-yellow-500 transition-colors shadow-md"
+              >
+                View Menu
+              </Link>
+            </div>
           </div>
         </section>
 
