@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import PageTransition from "../components/PageTransition";
 
 /** 
  * 1) DEFINE YOUR MENU CATEGORIES & ITEMS
@@ -68,11 +69,6 @@ const menuCategories = [
         name: "Dubai Chocolate Acai Bowl",
         price: "$19.99",
         desc: "Brazilian acai w/ granola, strawberries, pistachio cream, chocolate",
-      },
-      {
-        name: "Create or Layer Own Bowl",
-        price: "",
-        desc: "Layer your bowl with more than one base",
       },
     ],
   },
@@ -254,7 +250,6 @@ const menuCategories = [
       { name: "Freshly Squeezed Orange Juice", price: "$8.89+", desc: "" },
       { name: "Freshly Squeezed Apple Juice", price: "$8.89+", desc: "" },
       { name: "Celery Juice", price: "$8.89+", desc: "" },
-      { name: "Create a Juice", price: "$8.89+", desc: "" },
     ],
   },
   {
@@ -272,7 +267,6 @@ const menuCategories = [
   {
     name: "Smoothies",
     items: [
-      { name: "Create A Smoothie", price: "$8.89+", desc: "" },
       { name: "Strawberry Banana", price: "$8.89+", desc: "Strawberry, banana, milk" },
       { name: "Mango Tango", price: "$8.89+", desc: "Mango, pineapple, orange, agave" },
       { name: "Kissland", price: "$8.89+", desc: "Strawberry, berry, pineapple, milk" },
@@ -389,7 +383,6 @@ const menuCategories = [
   {
     name: "Crepe & Waffle Menu (vegan options)",
     items: [
-      { name: "Create Your Own Crepe", price: "$9.99", desc: "" },
       {
         name: "Strawberry Kiss Crepe",
         price: "$11.99",
@@ -479,7 +472,6 @@ const menuCategories = [
   {
     name: "Signature Sandwiches",
     items: [
-      { name: "Create your own sandwich", price: "$11.99", desc: "" },
       {
         name: "Veggie Wrap",
         price: "$9.99",
@@ -669,44 +661,46 @@ const menuCategories = [
  */
 export default function FullMenu() {
   return (
-    <main className="bg-gradient-to-b from-[#FFFBE8] to-[#FFF8E0] min-h-screen text-black px-4 sm:px-6 lg:px-8 pt-24 pb-12">
-      {menuCategories.map((cat) => (
-        <section key={cat.name} className="max-w-7xl mx-auto mb-16">
-          {/* Category Title */}
-          <div className="relative mb-8">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 inline-block">
-              {cat.name}
-            </h2>
-            <div className="absolute bottom-0 left-0 w-32 h-1 bg-orange-500 rounded-full mt-2"></div>
-          </div>
+    <PageTransition>
+      <main className="bg-gradient-to-b from-[#FFFBE8] to-[#FFF8E0] min-h-screen text-black px-4 sm:px-6 lg:px-8 pt-24 pb-12">
+        {menuCategories.map((cat) => (
+          <section key={cat.name} className="max-w-7xl mx-auto mb-16">
+            {/* Category Title */}
+            <div className="relative mb-8">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 inline-block">
+                {cat.name}
+              </h2>
+              <div className="absolute bottom-0 left-0 w-32 h-1 bg-orange-500 rounded-full mt-2"></div>
+            </div>
 
-          {/* Items Grid (3 columns on desktop) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {cat.items.map((item) => (
-              <div 
-                key={item.name} 
-                className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100"
-              >
-                <div className="flex justify-between items-start">
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 flex-grow">
-                    {item.name}
-                  </h3>
-                  {item.price && (
-                    <p className="text-orange-600 font-bold ml-4 whitespace-nowrap">
-                      {item.price}
+            {/* Items Grid (3 columns on desktop) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {cat.items.map((item) => (
+                <div 
+                  key={item.name} 
+                  className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100"
+                >
+                  <div className="flex justify-between items-start">
+                    <h3 className="text-lg font-bold text-gray-900 mb-2 flex-grow">
+                      {item.name}
+                    </h3>
+                    {item.price && (
+                      <p className="text-orange-600 font-bold ml-4 whitespace-nowrap">
+                        {item.price}
+                      </p>
+                    )}
+                  </div>
+                  {item.desc && (
+                    <p className="text-gray-600 text-sm mt-2 leading-relaxed">
+                      {item.desc}
                     </p>
                   )}
                 </div>
-                {item.desc && (
-                  <p className="text-gray-600 text-sm mt-2 leading-relaxed">
-                    {item.desc}
-                  </p>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-      ))}
-    </main>
+              ))}
+            </div>
+          </section>
+        ))}
+      </main>
+    </PageTransition>
   );
 }

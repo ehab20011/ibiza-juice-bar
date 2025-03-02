@@ -1,34 +1,25 @@
 // app/layout.tsx
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+"use client";
+
+import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar"; // Adjust the path if needed
+import Navbar from "./components/Navbar";
+import { AnimatePresence } from "framer-motion";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Ibiza Juice Bar",
-  description: "Fresh and healthy juices made with love",
-};
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={inter.className}>
         <Navbar />
-        {children}
+        <AnimatePresence mode="wait">
+          {children}
+        </AnimatePresence>
       </body>
     </html>
   );
